@@ -124,6 +124,13 @@ class Arm:
 
         self.loop.predict(0.020)
 
+        # constrain ourselves if we are going to do damage
+        if (
+            self.position() > Arm.RETRACTED_ANGLE
+            or self.position() < Arm.DEPLOYED_ANGLE
+        ):
+            self.loop.reset([self.position_observation(), self.velocity_observation()])
+
     @feedback
     def desired(self):
         return (self.desired_state.position, self.desired_state.velocity)
