@@ -78,7 +78,7 @@ class Arm:
         self.loop.reset([self.position_observation(), self.velocity_observation()])
         self.loop.setNextR([self.position_observation(), self.velocity_observation()])
 
-        self.motion_profile = TrapezoidProfile(TrapezoidProfile.Constraints(1.0, 1.0))
+        self.motion_profile = TrapezoidProfile(TrapezoidProfile.Constraints(5.0, 5.0))
         self.initial_state = TrapezoidProfile.State(
             self.position_observation(), self.velocity_observation()
         )
